@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <title>Добавить пару</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/addNote.css">
+</head>
+<body>
+<form action="" method="post">
+    <a href="/">На главную</a>
+    <div class="err">
+        {% if message %}
+            {{ message }}
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <label for="group">Группа</label>
+        <select class="form-control" id="exampleSelect8" name="group">
+            {% for group in groups %}
+                <option>{{ group.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="chet">Четность недели</label>
+        <select class="form-control" id="exampleSelect5" name="chet">
+            <option>0</option>
+            <option>1</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="day">День недели</label>
+        <select class="form-control" id="exampleSelect6" name="day">
+            <option>Понедельник</option>
+            <option>Вторник</option>
+            <option>Среда</option>
+            <option>Четверг</option>
+            <option>Пятница</option>
+            <option>Суббота</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="interval">Время</label>
+        <select class="form-control" id="exampleSelect2" name="interval">
+            {% for interval in intervals %}
+                <option>{{ interval.interval }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="subject">Предмет</label>
+        <select class="form-control" id="exampleSelect3" name="subject">
+            {% for subject in subjects %}
+                <option>{{ subject.subject_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="lecturer">Преподаватель</label>
+        <select class="form-control" id="exampleSelect4" name="lecturer">
+            {% for lecturer in lecturers %}
+                <option>{{ lecturer.last_name }} {{ lecturer.name }} {{ lecturer.surname }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input type="submit" class="btn btn-primary">
+</form>
+</body>
+</html>

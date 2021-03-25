@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <title>Title</title>
+</head>
+<body>
+{% include "nav.html" %}
+<div class="container">
+    <div class="table-content">
+        <h2>Пары</h2>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Время пары</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for interval in intervals %}
+                <tr class="table-light">
+                <td>{{ interval.intervals }}</td>
+            {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

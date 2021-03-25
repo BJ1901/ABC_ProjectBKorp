@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <title>Добавить предмет</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/addSubject.css">
+</head>
+<body>
+<form action="" method="post">
+    <a href="/">На главную</a>
+    <div class="err">
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+    </div>
+    <div>
+        <label for="subject_name">Название предмета</label>
+    </div>
+    <div>
+        <input type="text" name="subject_name">
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary">
+    </div>
+</form>
+</body>
+</html>

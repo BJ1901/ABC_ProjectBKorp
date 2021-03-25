@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <title>Группы</title>
+</head>
+<body>
+{% include "nav.html" %}
+<div class="container">
+    <div class="table_content">
+        <h2>Список групп</h2>
+        <div class="list-group">
+            {% for group in groups %}
+                <a href="#" class="list-group-item list-group-item-action">
+                    {{ group.name }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

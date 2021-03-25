@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <title>Добавить преполавателя</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/addLecturer.css">
+</head>
+<body>
+<form action="" method="post">
+    <a href="/">На главную</a>
+    <div class="err">
+        {% if message %}
+            <div>{{ message }}</div>
+        {% endif %}
+    </div>
+    <div>
+        <label for="last_name">Фамилия</label>
+        <input type="text" name="last_name">
+    </div>
+    <div>
+        <label for="name">Имя</label>
+        <input type="text" name="name">
+    </div>
+    <div>
+        <label for="surname">Отчество</label>
+        <input type="text" name="surname">
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary">
+    </div>
+</form>
+</body>
+</html>

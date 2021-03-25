@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    margin: 20px;
+}
+
+.err {
+    margin: 20px;
+}
+
+label {
+    width: 80px;
+}

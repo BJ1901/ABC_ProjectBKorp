@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <title>Расписание</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+{% include "nav.html" %}
+<div>
+    <h5>Дата: {{ curdate }}, {{ todned }} неделя</h5>
+    <div class="container">
+        <h2>Расписание:</h2>
+        <div>
+
+        </div>
+        <form action="" method="post">
+            <div class="form-group">
+                <div>Выбрать группу:</div>
+                <select class="form-control" id="exampleSelect11" name="cur_group">
+                    {% for groupn in group_names %}
+                        <option>{{ groupn.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Выбрать">
+        </form>
+
+        {% for day in days %}
+            <div class="table-rows">
+                <div class="daydiv">{{ day }}</div>
+                <div class="flex-container">
+                    {% for trv in trvs %}
+                        <div class="kek">
+                            <div class="time">{{ trv }}</div>
+                            {% for schedule in schedules %}
+                                {% if schedule.chet == 0 %}
+                                    <div class="chet_ned show">
+                                        {% if schedule.day == day %}
+                                            {% for interval in intervals %}
+                                                {% if interval.id == schedule.interval_id and interval.interval == trv %}
+                                                    <div class="subj_prep">
+                                                        <div class="subj">
+                                                            {% for subject in subjects %}
+                                                                {% if subject.id == schedule.subject_id %}
+                                                                    {{ subject.subject_name }}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                        <div>
+                                                            {% for lecturer in lecturers %}
+                                                                {% if lecturer.id == schedule.lecturer_id %}
+                                                                    {{ lecturer.last_name }} {{ lecturer.name }}
+                                                                    {{ lecturer.surname }}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                {% if schedule.chet == 1 %}
+                                    <div class="nechet_ned hide">
+                                        {% if schedule.day == day %}
+                                            {% for interval in intervals %}
+                                                {% if interval.id == schedule.interval_id and interval.interval == trv %}
+                                                    <div class="subj_prep">
+                                                        <div class="subj">
+                                                            {% for subject in subjects %}
+                                                                {% if subject.id == schedule.subject_id %}
+                                                                    {{ subject.subject_name }}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                        <div>
+                                                            {% for lecturer in lecturers %}
+                                                                {% if lecturer.id == schedule.lecturer_id %}
+                                                                    {{ lecturer.last_name }} {{ lecturer.name }}
+                                                                    {{ lecturer.surname }}
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="bot"></div>
+<script>
+    $(document).ready(function () {
+        $(".nechet").click(function () {
+            $(".chet_ned").toggleClass("hide");
+            $(".chet").toggleClass("active");
+            $(".nechet").toggleClass("active");
+            $(".nechet_ned").toggleClass("hide");
+        })
+        $(".chet").click(function () {
+            $(".chet_ned").toggleClass("hide");
+            $(".nechet_ned").toggleClass("hide");
+            $(".chet").toggleClass("active");
+            $(".nechet").toggleClass("active");
+        })
+    });
+</script>
+</body>
+</html>
